@@ -80,28 +80,7 @@ It features real-time validation (8+ business rule checks), an intuitive no-code
 
 
 
-    <script>
-  function removeFramerIcon() {
-    const targets = [
-      'div[aria-label="Open Framer"]',
-      'div[aria-label="Open Framer menu"]',
-      'div[aria-label="Edit this site in Framer"]',
-      'a[href*="framer.com"]',
-      'div[class*="framer"]',
-      'div[class*="badge"]',
-      'div[class*="stack_"]'
-    ];
 
-    targets.forEach((selector) => {
-      document.querySelectorAll(selector).forEach((el) => el.remove());
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    removeFramerIcon();
-    setInterval(removeFramerIcon, 800); // In case it's injected late
-  });
-</script>
 
     
     
