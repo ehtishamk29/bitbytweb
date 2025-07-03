@@ -5,26 +5,40 @@
     <meta charset="utf-8">
     
 <style>
-  /* Just in case it loads early */
   div[aria-label="Close Framer Menu"] {
     display: none !important;
-    visibility: hidden !important;
     opacity: 0 !important;
+    visibility: hidden !important;
     pointer-events: none !important;
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
   }
 </style>
 
 <script>
-  // Check every 500ms and remove the Framer floating menu/button if found
-  const removeFramerMenu = () => {
-    const el = document.querySelector('div[aria-label="Close Framer Menu"]');
-    if (el) {
-      el.remove();
-      clearInterval(removalInterval); // Stop checking once removed
+  function hideFramerMenu() {
+    const menu = document.querySelector('div[aria-label="Close Framer Menu"]');
+    if (menu) {
+      menu.style.display = 'none';
+      menu.style.visibility = 'hidden';
+      menu.style.opacity = '0';
+      menu.style.pointerEvents = 'none';
+      menu.style.position = 'absolute';
+      menu.style.top = '-9999px';
+      menu.style.left = '-9999px';
     }
-  };
+  }
 
-  const removalInterval = setInterval(removeFramerMenu, 500);
+  // Initial run after page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    hideFramerMenu();
+  });
+
+  // Re-check in case Framer injects it later
+  const interval = setInterval(() => {
+    hideFramerMenu();
+  }, 600);
 </script>
 
 
