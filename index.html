@@ -4,15 +4,29 @@
 <head>
     <meta charset="utf-8">
     
-    <style>
-/* Target the floating Framer button */
-.stack_s1n8l1x5.button_blajnuz.open_o1r4uh58 {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
+<style>
+  /* Just in case it loads early */
+  div[aria-label="Close Framer Menu"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
 </style>
+
+<script>
+  // Check every 500ms and remove the Framer floating menu/button if found
+  const removeFramerMenu = () => {
+    const el = document.querySelector('div[aria-label="Close Framer Menu"]');
+    if (el) {
+      el.remove();
+      clearInterval(removalInterval); // Stop checking once removed
+    }
+  };
+
+  const removalInterval = setInterval(removeFramerMenu, 500);
+</script>
+
 
     
     
